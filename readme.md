@@ -20,7 +20,7 @@ $ git clone https://github.com/caitb/hexo-prettify-highlight.git source/plugs/he
 
 ```yaml
 highlight:
-  enable: false //这里设置为false，禁用highlight
+  enable: false        //这里设置为false，禁用highlight
   line_number: false
   auto_detect: false
   tab_replace:
@@ -31,7 +31,8 @@ highlight:
 ```yaml
 highlight_prettify:
   enable: true
-  theme: atelier-estuary-light  //这里是主题的文件名
+  skin: tomorrow-night-blue          //这里是主题的文件名
+  prefix_path: '/plugs/hexo-prettify-highlight/'  //插件根目录
 ```
 
 (3)接着我们还要对`hexo`的`_config.yml`做如下配置
@@ -45,18 +46,18 @@ skip_render:
 
 ### 2.引用插件 ###
 
-在`xxx `主题展示文章的页面加入样式和脚本
+在`xxx `主题展示文章的页面加入样式和脚本，这里以`*.pug`模板为例
 
 ```javascript
   //在head中加入如下代码
-  if config.highlight_prettify.enable
-        link(rel='stylesheet', href='/plugs/prettify-highlight-plug/themes/'+config.highlight_prettify.skin+'.css')
+  if config.highlight_prettify && config.highlight_prettify.enable
+      link(rel='stylesheet', href=config.highlight_prettify.prefix_path + 'themes/'+config.highlight_prettify.skin+'.css')
   
   
   //在页面底部(为了页面友好展示)引入如下代码
-  if config.highlight_prettify.enable
-        script(src='/plugs/prettify-highlight-plug/js/jquery-2.2.4.min.js')
-        script(src='/plugs/prettify-highlight-plug/js/prettify.js')
+  if config.highlight_prettify && config.highlight_prettify.enable
+        script(src=config.highlight_prettify.prefix_path + 'js/jquery-2.2.4.min.js')
+        script(src=config.highlight_prettify.prefix_path + 'js/prettify.js')
         script.
             $(window).load(function () {
                 $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
