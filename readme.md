@@ -20,7 +20,7 @@ $ git clone https://github.com/caitb/hexo-prettify-highlight.git source/plugs/he
 
 ```yaml
 highlight:
-  enable: false        //这里设置为false，禁用highlight
+  enable: false        #这里设置为false，禁用highlight
   line_number: false
   auto_detect: false
   tab_replace:
@@ -31,8 +31,8 @@ highlight:
 ```yaml
 highlight_prettify:
   enable: true
-  skin: tomorrow-night-blue          //这里是主题的文件名
-  prefix_path: '/plugs/hexo-prettify-highlight/'  //插件根目录
+  skin: tomorrow-night-blue          #这里是主题的文件名
+  prefix_path: '/plugs/hexo-prettify-highlight/'  #插件根目录
 ```
 
 (3)接着我们还要对`hexo`的`_config.yml`做如下配置
